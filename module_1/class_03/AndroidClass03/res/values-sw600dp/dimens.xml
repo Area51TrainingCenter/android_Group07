@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tablet 7' -->
+<resources>
+    <dimen name="padding_large">8dp</dimen>
+         <dimen name="font_size_large">70sp</dimen>
+</resources>
