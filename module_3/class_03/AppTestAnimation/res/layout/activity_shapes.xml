@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mycontainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000" >
+
+
+
+        
+		    <View
+		        android:id="@+id/myview1"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    <View
+		        android:id="@+id/myview2"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    <View
+		        android:id="@+id/myview3"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    <View
+		        android:id="@+id/myview4"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    
+		    	<View
+		        android:id="@+id/myview5"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    		    
+		    	<View
+		        android:id="@+id/myview6"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:background="@drawable/circle_shape"
+		         />
+		    	<View
+		        android:id="@+id/myview0"
+		        android:layout_width="100dp"
+		        android:layout_height="100dp"
+		        android:background="@drawable/circle_shape2"
+		         />
+
+		    	<!--  <Button
+		    	    android:id="@+id/button1"
+		    	    style="?android:attr/buttonStyleSmall"
+		    	    android:layout_width="wrap_content"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_alignParentBottom="true"
+		    	    android:layout_centerHorizontal="true"
+		    	    android:layout_marginBottom="57dp"
+		    	    android:onClick="click_handler"
+		    	    android:text="Button" />
+		    	    
+		    	    -->
+
+</RelativeLayout>
