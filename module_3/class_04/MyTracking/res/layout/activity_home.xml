@@ -8,14 +8,14 @@
     android:gravity="center" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tracking ON" 
         android:onClick="play_handler"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tracking OFF"

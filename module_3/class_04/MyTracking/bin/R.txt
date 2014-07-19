@@ -304,8 +304,8 @@ int id action_settings 0x7f060041
 int id activity_chooser_view_content 0x7f060028
 int id always 0x7f06000f
 int id beginning 0x7f060014
-int id button1 0x7f06003f
-int id button2 0x7f060040
+int id btnOff 0x7f060040
+int id btnOn 0x7f06003f
 int id checkbox 0x7f060030
 int id collapseActionView 0x7f060011
 int id default_activity_button 0x7f06002b

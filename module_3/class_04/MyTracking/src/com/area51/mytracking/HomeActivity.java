@@ -2,6 +2,8 @@ package com.area51.mytracking;
 
 import java.io.IOException;
 
+import com.area51.mytracking.utils.TrackMeSession;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,17 +19,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.os.Build;
 
 public class HomeActivity extends FragmentActivity {
 
 
+	
+	private Button btnON, btnOff;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-
+		btnON = (Button)findViewById(R.id.btnOn);
+		btnOff = (Button)findViewById(R.id.btnOff);
+		Log.v("CONSOLE","tracking "+TrackMeSession.isTracking(this) );
+		
+		//viewOFFEnabled();
+		if(TrackMeSession.isTracking(this))
+		{
+			//viewONEnabled();
+		}
 	}
 	
 	@Override
@@ -85,6 +98,7 @@ public class HomeActivity extends FragmentActivity {
 	
 	public void play_handler(View view)
 	{
+		viewONEnabled();
 		Intent i=new Intent(this, MyService.class);
 		//si.putExtras(extras);
 		startService(i);
@@ -92,9 +106,22 @@ public class HomeActivity extends FragmentActivity {
 	
 	public void stop_handler(View view)
 	{
+		viewOFFEnabled();
 		Intent i=new Intent(this, MyService.class);
 		stopService(i);
 		
+	}
+	
+	private void viewONEnabled()
+	{
+		btnON.setEnabled(false);
+		btnOff.setEnabled(true);
+	}
+	
+	private void viewOFFEnabled()
+	{
+		btnON.setEnabled(true);
+		btnOff.setEnabled(false);
 	}
 
 

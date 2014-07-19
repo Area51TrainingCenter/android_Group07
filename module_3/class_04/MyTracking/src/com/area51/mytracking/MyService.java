@@ -2,6 +2,8 @@ package com.area51.mytracking;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.http.Header;
 import org.apache.http.entity.StringEntity;
@@ -13,6 +15,12 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.area51.mytracking.entity.ErrorEntity;
+import com.area51.mytracking.entity.ReportEntity;
+import com.area51.mytracking.entity.SuccessEntity;
+import com.area51.mytracking.utils.LocationUtils;
+import com.area51.mytracking.utils.RESTConstant;
+import com.area51.mytracking.utils.TrackMeSession;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -84,6 +92,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		TrackMeSession.trackingOff(getApplicationContext());
 		
 		Log.v("CONSOLE","SERVICE onDestroy");
         // If the client is connected
@@ -113,7 +122,10 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		// TODO Auto-generated method stub
 		
 		Log.v("CONSOLE","SERVICE onStartCommand");
-
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+		String timeID = dateFormat.format(new Date());
+		
+		TrackMeSession.trackingON(getApplicationContext(), timeID);
         mUpdatesRequested = true;
 
        // if (servicesConnected()) {
@@ -180,11 +192,12 @@ GooglePlayServicesClient.OnConnectionFailedListener {
         Log.v("CONSOLE", " LAT LNG "+location.getLatitude()+" "+
         location.getLongitude());
         String androidId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
-        
+        String timeId = TrackMeSession.getCurrentTracking(getApplicationContext());
         ReportEntity entity= new ReportEntity();
         entity.setLat(""+location.getLatitude());
         entity.setLng(""+location.getLongitude());
         entity.setDeviceId(androidId);
+        entity.setTimeId(timeId);
         
         sendReport(entity);
 	}
@@ -213,8 +226,9 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 			jsonParams.put("lat", entity.getLat());
 		    jsonParams.put("lng", entity.getLng());
 		    jsonParams.put("deviceid", entity.getDeviceId());
+		    jsonParams.put("timeid", entity.getTimeId());
 		    
-		    Log.v("CONSOLE", "lat "+entity.getLat()+" lng "+entity.getLng()+" deviceid "+entity.getDeviceId());
+		    Log.v("CONSOLE", "lat "+entity.getLat()+" lng "+entity.getLng()+" deviceid "+entity.getDeviceId()+ "time id "+entity.getTimeId());
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
